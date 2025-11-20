@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn Academy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h2>- Students Record -</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Espertise</th>
+                <th>Salary</th>
+                <th>Trainer Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in students %}
+                <tr>
+                    <td>{{ e.id }}</td>
+                    <td>{{ e.first_name }}</td>
+                    <td>{{ e.last_name }}</td>
+                    <td>{{ e.email }}</td>
+                    <td>{{ e.enrolled_course }}</td>
+                    <td>{{ e.is_active }}</td>
+                    <td>{{ e.trainer }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
