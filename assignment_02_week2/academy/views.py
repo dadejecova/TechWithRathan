@@ -50,3 +50,15 @@ def course_detail(request,id):
     }
     print(context)
     return render(request, 'academy/course/course_detail.html', context)
+
+
+def course_add(request):
+    return render(request, 'academy/student/course_add.html')
+
+
+def trainer_add(request):
+    return render(request, 'academy/student/trainer_add.html')
+
+
+def student_add(request):
+    return render(request, 'academy/student/student_add.html')
