@@ -30,4 +30,4 @@ def student_detail(request,id):
     context = {
         'students': students
     }
-    return render(request, 'academy/student_detail.html', context)
+    return render(request, 'academy/student/student_detail.html', context)
