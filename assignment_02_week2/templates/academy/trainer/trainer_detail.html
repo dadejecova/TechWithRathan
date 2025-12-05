@@ -34,9 +34,10 @@
                     <td>{{ trainers.expertise }}</td>
                     <td>{{ trainers.salary }}</td>
                     <td>{{ trainers.trainer_photo }}</td>
+                    <td> <img src="{{ trainers.trainer_photo.url }}" alt="{{ trainers.first_name }}" width="100"></td>
                     <td>
                         <div>
-                            <a href="{% url 'home' %}"><i class="fa fa-eye"></i></a>
+                            <a href="{% url 'trainer' %}"><i class="fa fa-eye"></i></a>
                         </div>
                     </td>
                 </tr>

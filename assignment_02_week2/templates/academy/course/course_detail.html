@@ -30,9 +30,10 @@
                     <td>{{ courses.description }}</td>
                     <td>{{ courses.duration }}</td>
                     <td>{{ courses.course_image }}</td>
+                    <td> <img src="{{ courses.course_image.url }}" alt="{{ courses.course_name }}" width="100"></td>
                     <td>
                         <div>
-                            <a href="{% url 'home' %}"><i class="fa fa-eye"></i></a>
+                            <a href="{% url 'course' %}"><i class="fa fa-eye"></i></a>
                         </div>
                     </td>
                 </tr>
