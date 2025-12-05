@@ -11,7 +11,7 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Students Record -</h2>
+    <h2>- Students Record - </h2>
     <table>
         <thead>
             <tr>
@@ -21,19 +21,21 @@
                 <th>Email</th>
                 <th>Espertise</th>
                 <th>Salary</th>
-                <th>Trainer Photo</th>
-                <th>Actions</th>
+                <th>Trainer</th>
+                <th>Student Photo</th>
+                <th>▲</th>
             </tr>
         </thead>
         <tbody>
                 <tr>
-                    <td>{{ student_detail.id }}</td>
-                    <td>{{ student_detail.first_name }}</td>
-                    <td>{{ student_detail.last_name }}</td>
-                    <td>{{ student_detail.email }}</td>
-                    <td>{{ student_detail.enrolled_course }}</td>
-                    <td>{{ student_detail.is_active }}</td>
-                    <td>{{ student_detail.trainer }}</td>
+                    <td>{{ students.id }}</td>
+                    <td>{{ students.first_name }}</td>
+                    <td>{{ students.last_name }}</td>
+                    <td>{{ students.email }}</td>
+                    <td>{{ students.enrolled_course }}</td>
+                    <td>{{ students.is_active }}</td>
+                    <td>{{ students.trainer }}</td>
+                    <td> <img src="{{ students.image.url }}" alt="{{ students.first_name }}"></td>
                     <td>
                         <div>
                             <a href="{% url 'home' %}"><i class="fa fa-eye"></i></a>

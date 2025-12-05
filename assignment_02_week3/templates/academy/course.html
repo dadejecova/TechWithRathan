@@ -19,6 +19,7 @@
                 <th>Name</th>
                 <th>description</th>
                 <th>duration</th>
+                <th>▲</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,14 @@
                     <td>{{ e.id }}</td>
                     <td>{{ e.course_name }}</td>
                     <td>{{ e.description }}</td>
-                    <td><p>{{ e.duration }} weeks.</p></td>                    
+                    <td><p>{{ e.duration }} weeks.</p></td>
+                    <td>
+                        <div>
+                            <a href="{% url 'course_detail' e.id %}"><i class="fa fa-eye"></i></a>
+                            <a href=""><i class="fa fa-edit"></i></a>
+                            <a href=""><i class="fa fa-trash"></i></a>
+                        </div>
+                    </td>                    
                 </tr>
             {% endfor %}
         </tbody>

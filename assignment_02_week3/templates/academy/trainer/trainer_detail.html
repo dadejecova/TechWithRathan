@@ -11,7 +11,7 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Trainer Record -</h2>
+    <h2>- Trainer Record - </h2>
     <table>
         <thead>
             <tr>
@@ -21,27 +21,25 @@
                 <th>Email</th>
                 <th>Espertise</th>
                 <th>Salary</th>
+                <th>Trainer Photo</th>
                 <th>▲</th>
             </tr>
         </thead>
         <tbody>
-            {% for e in trainers %}
                 <tr>
-                    <td>{{ e.id }}</td>
-                    <td>{{ e.first_name }}</td>
-                    <td>{{ e.last_name }}</td>
-                    <td>{{ e.email }}</td>
-                    <td>{{ e.expertise }}</td>
-                    <td>{{ e.salary }}</td>
+                    <td>{{ trainers.id }}</td>
+                    <td>{{ trainers.first_name }}</td>
+                    <td>{{ trainers.last_name }}</td>
+                    <td>{{ trainers.email }}</td>
+                    <td>{{ trainers.expertise }}</td>
+                    <td>{{ trainers.salary }}</td>
+                    <td>{{ trainers.trainer_photo }}</td>
                     <td>
                         <div>
-                            <a href="{% url 'trainer_detail' e.id %}"><i class="fa fa-eye"></i></a>
-                            <a href=""><i class="fa fa-edit"></i></a>
-                            <a href=""><i class="fa fa-trash"></i></a>
+                            <a href="{% url 'home' %}"><i class="fa fa-eye"></i></a>
                         </div>
                     </td>
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
 </body>
