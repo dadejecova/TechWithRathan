@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Employee Directory</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+   
+    <h2>- Employees Record -</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Total Courses</th>
+                <th>Total Trainers</th>
+                <th>Total Students</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ courses_total }}</td>
+                    <td>{{ trainers_total }}</td>
+                    <td>{{ students_total }}</td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>
