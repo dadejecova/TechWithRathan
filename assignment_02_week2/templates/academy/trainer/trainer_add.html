@@ -11,8 +11,8 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Add Student - </h2>
-    <form action="{% url 'student_add' %}" method="POST" enctype="multipart/form-data">
+    <h2>- Add Trainer - </h2>
+    <form action="{% url 'trainer_add' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
 

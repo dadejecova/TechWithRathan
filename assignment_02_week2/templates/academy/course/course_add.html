@@ -11,12 +11,14 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Add Student - </h2>
-    <form action="{% url 'student_add' %}" method="POST" enctype="multipart/form-data">
+    <h2>- Add Course - </h2>
+    <form action="{% url 'course_add' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
 
         <button type="submit">Submit</button>
+        <button href="{% url 'course' %}">Cancel</button>
+        <button><a class="button" href="{% url 'course' %}">cancel</a></button>
     </form>
 </body>
 </html>

@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from .models import course,student,trainer
+from .forms import StudentForm, TrainerForm, CourseForm, EditStudentForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def course_d(request):
@@ -53,12 +55,56 @@ def course_detail(request,id):
 
 
 def course_add(request):
-    return render(request, 'academy/student/course_add.html')
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        else:
+            print(form.errors)
+    form = CourseForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'academy/course/course_add.html', context)
 
 
 def trainer_add(request):
-    return render(request, 'academy/student/trainer_add.html')
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        else:
+            print(form.errors)
+    form = CourseForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'academy/trainer/trainer_add.html', context)
 
 
 def student_add(request):
-    return render(request, 'academy/student/student_add.html')
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        else:
+            print(form.errors)
+    form = StudentForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'academy/student/student_add.html', context)
+
+
+def student_edit(request, id):
+    studentpk = get_object_or_404(student, id = id)
+    if request.method == 'POST':
+        form = EditStudentForm(request.POST, request.FILES, instance = studentpk)
+        if form.is_valid():
+            form.save()
+            return redirect('student')
+    form = EditStudentForm(instance = studentpk)
+    context = {
+        'form': form,
+    }
+    return render(request, 'academy/student/student_detail.html', context)
