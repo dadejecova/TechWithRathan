@@ -21,7 +21,9 @@
                 <th>Name</th>
                 <th>description</th>
                 <th>duration</th>
-                <th>▲</th>
+                {% if perms.academy.course_add %}
+                <th>Actions</th>
+                {% endif%}
             </tr>
         </thead>
         <tbody>
@@ -31,13 +33,15 @@
                     <td>{{ e.course_name }}</td>
                     <td>{{ e.description }}</td>
                     <td><p>{{ e.duration }} weeks.</p></td>
+                     {% if perms.academy.course_add %}
                     <td>
                         <div>
                             <a href="{% url 'course_detail' e.id %}"><i class="fa fa-eye"></i></a>
                             <a href="{% url 'course_edit' e.id %}"><i class="fa fa-edit"></i></a>
                             <a href="{% url 'course_delete' e.id %}"><i class="fa fa-trash"></i></a>
                         </div>
-                    </td>                    
+                    </td>        
+                    {% endif%}            
                 </tr>
             {% endfor %}
         </tbody>

@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from .models import course,student,trainer
 from .forms import StudentForm, TrainerForm, CourseForm, EditStudentForm, EditTrainerForm, EditCourseForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 def course_d(request):
@@ -53,7 +54,7 @@ def course_detail(request,id):
     print(context)
     return render(request, 'academy/course/course_detail.html', context)
 
-
+@login_required
 def course_add(request):
     if request.method == 'POST':
         form = CourseForm(request.POST, request.FILES)
@@ -68,7 +69,7 @@ def course_add(request):
     }
     return render(request, 'academy/course/course_add.html', context)
 
-
+@login_required
 def course_edit(request, id):
     coursepk = get_object_or_404(course, id = id)
     if request.method == 'POST':
@@ -83,12 +84,13 @@ def course_edit(request, id):
     }
     return render(request, 'academy/course/course_edit.html', context)
 
-
+@login_required
 def course_delete(request, id):
     courses = get_object_or_404(course, id = id)
     courses.delete()
     return redirect('course')
 
+@login_required
 
 def trainer_add(request):
     if request.method == 'POST':
@@ -104,6 +106,8 @@ def trainer_add(request):
     }
     return render(request, 'academy/trainer/trainer_add.html', context)
 
+
+@login_required
 def trainer_edit(request, id):
     trainerpk = get_object_or_404(trainer, id = id)
     if request.method == 'POST':
@@ -119,11 +123,14 @@ def trainer_edit(request, id):
     return render(request, 'academy/trainer/trainer_edit.html', context)
 
 
+@login_required
 def trainer_delete(request, id):
     trainers = get_object_or_404(trainer, id = id)
     trainers.delete()
     return redirect('trainer')
 
+
+@login_required
 def student_add(request):
     if request.method == 'POST':
         form = StudentForm(request.POST, request.FILES)
@@ -139,6 +146,7 @@ def student_add(request):
     return render(request, 'academy/student/student_add.html', context)
 
 
+@login_required
 def student_edit(request, id):
     studentpk = get_object_or_404(student, id = id)
     if request.method == 'POST':
@@ -154,6 +162,7 @@ def student_edit(request, id):
     return render(request, 'academy/student/student_edit.html', context)
 
 
+@login_required
 def student_delete(request, id):
     students = get_object_or_404(student, id = id)
     students.delete()
