@@ -30,3 +30,8 @@ def login(request):
         'userform': userform
     }
     return render(request, 'accounts/login.html', context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
