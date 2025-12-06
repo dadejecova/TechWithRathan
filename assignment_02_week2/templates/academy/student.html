@@ -12,7 +12,7 @@
 <body>
     {% include 'navbar.html' %}
     <h2>- Students Record -</h2>
-    <h2><th><a href="{% url 'student_add' %}">Add Employee</a></th></h2>
+    <h2><th><a href="{% url 'student_add' %}">Add Student</a></th></h2>
     
     
     <table>
@@ -42,7 +42,7 @@
                         <div>
                             <a href="{% url 'student_detail' e.id %}"><i class="fa fa-eye"></i></a>
                             <a href="{% url 'student_edit' e.id %}"><i class="fa fa-edit"></i></a>
-                            <a href=""><i class="fa fa-trash"></i></a>
+                            <a href="{% url 'student_delete' e.id %}"><i class="fa fa-trash"></i></a>
                         </div>
                     </td>
                 </tr>

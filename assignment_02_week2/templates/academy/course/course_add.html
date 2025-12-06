@@ -17,8 +17,8 @@
         {{ form.as_p }}
 
         <button type="submit">Submit</button>
-        <button href="{% url 'course' %}">Cancel</button>
-        <button><a class="button" href="{% url 'course' %}">cancel</a></button>
+
+        <a href="{% url 'course' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </body>
 </html>

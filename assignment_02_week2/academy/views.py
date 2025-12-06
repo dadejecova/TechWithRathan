@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from .models import course,student,trainer
-from .forms import StudentForm, TrainerForm, CourseForm, EditStudentForm
+from .forms import StudentForm, TrainerForm, CourseForm, EditStudentForm, EditTrainerForm, EditCourseForm
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -59,6 +59,7 @@ def course_add(request):
         form = CourseForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('course')
         else:
             print(form.errors)
     form = CourseForm()
@@ -68,25 +69,67 @@ def course_add(request):
     return render(request, 'academy/course/course_add.html', context)
 
 
-def trainer_add(request):
+def course_edit(request, id):
+    coursepk = get_object_or_404(course, id = id)
     if request.method == 'POST':
-        form = CourseForm(request.POST, request.FILES)
+        form = EditCourseForm(request.POST, request.FILES, instance = coursepk)
         if form.is_valid():
             form.save()
+            return redirect('course')
+    form = EditCourseForm(instance = coursepk)
+    context = {
+        'form': form,
+        'course': coursepk
+    }
+    return render(request, 'academy/course/course_edit.html', context)
+
+
+def course_delete(request, id):
+    courses = get_object_or_404(course, id = id)
+    courses.delete()
+    return redirect('course')
+
+
+def trainer_add(request):
+    if request.method == 'POST':
+        form = TrainerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('trainer')
         else:
             print(form.errors)
-    form = CourseForm()
+    form = TrainerForm()
     context = {
         'form': form,
     }
     return render(request, 'academy/trainer/trainer_add.html', context)
 
+def trainer_edit(request, id):
+    trainerpk = get_object_or_404(trainer, id = id)
+    if request.method == 'POST':
+        form = EditTrainerForm(request.POST, request.FILES, instance = trainerpk)
+        if form.is_valid():
+            form.save()
+            return redirect('student')
+    form = EditTrainerForm(instance = trainerpk)
+    context = {
+        'form': form,
+        'trainer': trainerpk
+    }
+    return render(request, 'academy/trainer/trainer_edit.html', context)
+
+
+def trainer_delete(request, id):
+    trainers = get_object_or_404(trainer, id = id)
+    trainers.delete()
+    return redirect('trainer')
 
 def student_add(request):
     if request.method == 'POST':
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('student')
         else:
             print(form.errors)
     form = StudentForm()
@@ -106,5 +149,12 @@ def student_edit(request, id):
     form = EditStudentForm(instance = studentpk)
     context = {
         'form': form,
+        'student': studentpk
     }
-    return render(request, 'academy/student/student_detail.html', context)
+    return render(request, 'academy/student/student_edit.html', context)
+
+
+def student_delete(request, id):
+    students = get_object_or_404(student, id = id)
+    students.delete()
+    return redirect('student')

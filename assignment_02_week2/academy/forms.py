@@ -33,10 +33,34 @@ class CourseForm(forms.ModelForm):
         }
 
 
+class EditCourseForm(forms.ModelForm):
+    class Meta:
+        model = course
+        fields = {
+            'course_name',
+            'description',
+            'duration',
+            'course_image',
+        }
+
 class TrainerForm(forms.ModelForm):
     class Meta:
         model = trainer
         fields = '__all__'
         widgets = {
             'joining_date': forms.DateInput(attrs={'type':'date'})
+        }
+
+
+class EditTrainerForm(forms.ModelForm):
+    class Meta:
+        model = trainer
+        fields = {
+            'first_name',
+            'last_name',
+            'email',
+            'expertise',
+            'salary',
+            'trainer_photo',
+            'joinin_date',
         }

@@ -12,7 +12,7 @@
 <body>
     {% include 'navbar.html' %}
     <h2>- Trainer Record -</h2>
-    <h2><th><a href="{% url 'trainer_add' %}">Add Employee</a></th></h2>
+    <h2><th><a href="{% url 'trainer_add' %}">Add Trainer</a></th></h2>
     <table>
         <thead>
             <tr>
@@ -37,8 +37,8 @@
                     <td>
                         <div>
                             <a href="{% url 'trainer_detail' e.id %}"><i class="fa fa-eye"></i></a>
-                            <a href=""><i class="fa fa-edit"></i></a>
-                            <a href=""><i class="fa fa-trash"></i></a>
+                            <a href="{% url 'trainer_edit' e.id %}"><i class="fa fa-edit"></i></a>
+                            <a href="{% url 'trainer_delete' e.id %}"><i class="fa fa-trash"></i></a>
                         </div>
                     </td>
                 </tr>
