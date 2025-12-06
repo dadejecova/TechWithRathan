@@ -13,6 +13,7 @@ urlpatterns = [
     path('academy/', include('academy.urls')),
 
     path('register/', AccountsViews.register, name='register'),
+    path('login/', AccountsViews.login, name='login'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

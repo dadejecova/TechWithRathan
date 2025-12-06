@@ -9,18 +9,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% include 'styleBoost.html' %}
-    {% include 'scriptBoost.html' %}
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2 class="text-center">- Add Course - </h2>
-    <form action="{% url 'course_add' %}" method="POST" enctype="multipart/form-data" style="text-align: center; width: 400px; margin: auto;">
-        {% csrf_token %}
-        {{ form | crispy }}
+    <h2 class="text-center">- Login - </h2>
 
-        <button type="submit">Submit</button>
-        
-        <a href="{% url 'course' %}" class="btn btn-secondary">Cancel</a>
+    <form action="{% url 'login' %}" method="POST" style="text-align: center; width: 400px; margin: auto;">
+        {% csrf_token %}
+        {{ userform | crispy }}
+        <button type="submit">Login</button>
     </form>
+    {% include 'scriptBoost.html' %}
 </body>
 </html>
