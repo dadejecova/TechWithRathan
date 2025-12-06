@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Employee Directory</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% include 'styleBoost.html' %}
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Employees Record -</h2>
+    <h2 class="text-center">- Employees Record -</h2>
     <table>
         <thead>
             <tr>
@@ -27,5 +28,6 @@
                 </tr>
         </tbody>
     </table>
+    {% include 'scriptBoost.html' %}
 </body>
 </html>

@@ -8,12 +8,12 @@
     <title>TechLearn Academy</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% include 'styleBoost.html' %}
+    {% include 'scriptBoost.html' %}
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h2>- Students Record -</h2>
-    <h2><th><a href="{% url 'student_add' %}">Add Student</a></th></h2>
-    
+    <h2 class="text-center">- Students Record - <a class="btn btn-secondary" href="{% url 'student_add' %}">Add Student</a></h2>
     
     <table>
         <thead>
